@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+    	<title>autocomplete</title>
+		<script src="/site_media/jquery/jquery-latest.js"></script>
+		<link rel="stylesheet" href="/site_media/jquery/jquery.autocomplete.css" type="text/css" />
+		<script type="text/javascript" src="/site_media/jquery/jquery.bgiframe.min.js"></script>
+		<script type="text/javascript" src="/site_media/jquery/jquery.autocomplete.js"></script>
+		<script>
+			$(document).ready(function () {
+				$("#tags").autocomplete(
+					'/autocomplete/', {delay:10}
+				);
+				$("input.focus:last").focus();
+			});
+		</script>
+    </head>
+<body>
+	<form method="post" action=".">
+	tags(空格分隔):<input id="tags" type="text" name="tags" maxlength="100" size="50" value="" class="focus" />
+	<input type="submit" value="保存" />
+	</form>
+	<div>
+		{% for tag in tags %}
+		   {{tag.name}}
+		{% endfor %}
+	</div>
+</body>
+</html>
